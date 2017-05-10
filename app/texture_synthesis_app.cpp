@@ -7,14 +7,15 @@ using namespace cv;
 
 int main(int argc, char** argv )
 {
-  if( argc != 2)
+  if( argc != 3)
   {
-    cout <<" Usage: display_image ImageToLoadAndDisplay" << endl;
+    cout <<" Usage: display_image ImageToLoadAndDisplay DirectionAndNameOfImage" << endl;
     return -1;
   }
 
-  Mat image;
+  Mat image, img_msk;
   image = imread(argv[1], CV_LOAD_IMAGE_COLOR);   // Read the file
+  img_msk = imread(argv[2], CV_LOAD_IMAGE_GRAYSCALE);   // Read the file
 
   if(! image.data )                              // Check for invalid input
   {
@@ -22,8 +23,11 @@ int main(int argc, char** argv )
     return -1;
   }
 
+  // texture synthesizer
   vision::TextureSynthesizer ts;
   ts.foo();
+
+  imwrite( argv[3], image);
 
   // Wait for a keystroke in the window
   return 0;
