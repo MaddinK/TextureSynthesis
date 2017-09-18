@@ -1,5 +1,13 @@
+/** Texture Synthesis
+ *
+ * usage:
+ * ./texture_synthesis <input image> <mask> <output image>
+ *
+ * ../data/horse_on_beach.jpg ../data/horse_on_beach_mask.png ../data/results/synthesizedImg.jpg
+ *
+ */
+
 #include <opencv2/opencv.hpp>
-#include <fstream>
 #include "../include/texture_synthesis/texture_synthesis.h"
 
 using namespace std;
@@ -7,7 +15,7 @@ using namespace cv;
 
 int main(int argc, char** argv )
 {
-  if( argc != 3)
+  if( argc != 4)
   {
     cout <<" Usage: display_image ImageToLoadAndDisplay DirectionAndNameOfImage" << endl;
     return -1;
@@ -25,7 +33,8 @@ int main(int argc, char** argv )
 
   // texture synthesizer
   vision::TextureSynthesizer ts;
-  ts.foo();
+  ts.loadImages(image, img_msk);
+  ts.synthesize();
 
   imwrite( argv[3], image);
 

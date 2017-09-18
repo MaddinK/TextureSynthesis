@@ -1,8 +1,14 @@
 #include <texture_synthesis/texture_synthesis.h>
-#include <iostream>
 
 void
-vision::TextureSynthesizer::foo()
+vision::TextureSynthesizer::synthesize()
 {
-    std::cout << "test";
+
+}
+
+void
+vision::TextureSynthesizer::loadImages(cv::Mat &image_in, cv::Mat &mask_in)
+{
+    image = image_in;
+    mask = mask_in;
 }
