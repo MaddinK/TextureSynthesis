@@ -33,6 +33,7 @@ int main(int argc, char** argv )
 
   // texture synthesizer
   vision::TextureSynthesizer ts;
+  ts.setDebug(1,"/home/martin/SourceCode_CPlusPlus/TextureSynthesis/data/results/");
   ts.loadImages(image, img_msk);
   ts.synthesize();
 

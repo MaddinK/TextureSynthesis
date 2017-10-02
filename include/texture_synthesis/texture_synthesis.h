@@ -4,20 +4,31 @@
 
 #include <opencv2/core/mat.hpp>
 
+
 namespace vision {
-    class TextureSynthesizer {
-      public:
-        TextureSynthesizer(){
-            image = 0;
-            mask = 0;
-            patch_size = 12;}
-        void loadImages(cv::Mat& image_in, cv::Mat& mask_in);
-        void synthesize();
-    private:
-        cv::Mat image;
-        cv::Mat mask;
-        int patch_size;
-    };
+  class TextureSynthesizer {
+
+  public:
+    // Constructor
+    TextureSynthesizer(cv::Mat& image_in, cv::Mat& mask_in);
+    TextureSynthesizer();
+
+    // functions
+    void loadImages(cv::Mat& image_in, cv::Mat& mask_in);
+    void synthesize();
+
+    // helper
+    void setDebug(bool debug_val, std::string out_dir);
+    void debugPrint(std::string img_dir, const cv::Mat& image_in);
+
+  private:
+    cv::Mat image;
+    cv::Mat mask;
+    int patch_size;
+
+    bool debug_;
+    std::string out_dir_;
+  };
 
 }
 

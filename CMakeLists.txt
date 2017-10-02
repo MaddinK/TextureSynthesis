@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
 
-#SET(CMAKE_CXX_COMPILER /usr/bin/c++)
-
 set(target texture_synthesis)
 project( ${target})
+
+set (CMAKE_CXX_STANDARD 11)
+
 find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 include_directories(${CMAKE_SOURCE_DIR}/include/)
