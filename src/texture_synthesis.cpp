@@ -123,11 +123,29 @@ vision::TextureSynthesizer::synthesize() {
     debugPrint("dy1.png", dy);
   }
 
-  temp = dx; dx = -dy; dy = temp;
+  // compute directions of isophotes
+  dx.copyTo(temp);
+  dy=dy*-1;
+  dy.copyTo(dx);
+  temp.copyTo(dy);
 
   if(debug_) {
     debugPrint("dx2.png", dx);
     debugPrint("dy2.png", dy);
+  }
+
+  float testval1;
+  float testval2;
+
+  for(int row = 0; row < dy.rows; row++){
+    for (int col = 0; col < dy.cols; col++){
+      testval1 = dx.at<float>(col,row);
+      testval2 = dy.at<float>(col,row);
+      std::cout << "Testval: " << testval1 << " Testval2: " << testval2 << std::endl;
+      if(testval1 != testval2){
+        std::cout << "Image 1 and image 2 are different! ";
+      }
+    }
   }
 
   cv::normalize(dx, dx, 0, 1);
